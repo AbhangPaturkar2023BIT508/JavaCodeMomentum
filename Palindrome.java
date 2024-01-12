@@ -61,5 +61,7 @@ public class Palindrome {
                 }
                 break;
         }
+
+        scan.close();
     }
 }

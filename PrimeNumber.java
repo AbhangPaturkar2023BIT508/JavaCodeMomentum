@@ -7,7 +7,6 @@ public class PrimeNumber {
         int x = scan.nextInt();
 
         for (int i = 1; i <= x; i++) {
-            int num = i;
             int count = 0;
             for (int j = 1; j <= i; j++) {
                 if (i % j == 0) {
@@ -19,5 +18,7 @@ public class PrimeNumber {
                 System.out.print(i + " ");
             }
         }
+
+        scan.close();
     }
 }
