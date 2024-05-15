@@ -1,18 +1,24 @@
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 import java.awt.*;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Calsi {
+class InvalidOperationException extends RuntimeException{
+    public InvalidOperationException(String msg){
+        super(msg);
+    }
+}
+
+public class Calsi implements ActionListener {
     private JFrame jf;
     private JLabel num1Lable, num2Label, resultLabel;
     private JTextField num1TField, num2TField, resultTField;
     private JButton addButton, subButton;
-    private J
 
     public Calsi() {
         jf = new JFrame("Practice Calsi");
@@ -37,13 +43,32 @@ public class Calsi {
         jf.add(resultTField);
         jf.setVisible(true);
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        addButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int a = Integer.parseInt(num1TField.getText());
-                int b = Integer.parseInt(num2TField.getText());
-                resultTField.setText((a + b) + "");
+        addButton.addActionListener(this);
+        subButton.addActionListener(this);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+        int a = Integer.parseInt(num1TField.getText());
+        int b = Integer.parseInt(num2TField.getText());
+        switch (e.getActionCommand()) {
+            case "+":
+                resultTField.setText((a+b)+"");
+                break;
+
+            // case "-":
+            //     resultTField.setText((a+b)+"");
+            //     break;
+        
+            default:
+            try{
+                throw new InvalidOperationException("Illegal Operator Used...");
+            }catch(Exception ex){
+                JOptionPane.showMessageDialog(jf, ex.getMessage(), "Error", JOptionPane.WARNING_MESSAGE);
             }
-        });
+                // break;//
+        }
+        // resultTField.setText((a + b) + "");
+        // System.out.println(e.getActionCommand());
     }
 
     public static void main(String[] args) {
