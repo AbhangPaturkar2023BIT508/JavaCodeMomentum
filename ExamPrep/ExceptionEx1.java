@@ -82,9 +82,12 @@ class ExceptionEx1 {
     }
     public static void main(String[] args){
         try{
-            Thread.sleep(1213);
+            System.out.println(5/0);
+            // Thread.sleep(1213);
+            System.out.println("args[0]");
+
             // throw new InterruptedException();
-        }catch(InterruptedException e){
+        }catch(ArithmeticException e){
             System.err.println(e);
         }
     }

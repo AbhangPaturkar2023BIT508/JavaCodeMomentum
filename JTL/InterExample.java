@@ -1,0 +1,3 @@
+interface InterfaceSample {
+	void fun();
+}

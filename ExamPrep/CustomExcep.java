@@ -1,19 +1,29 @@
-package ExamPre;
+
+// package ExamPre;
 import java.util.Scanner;
 
-class InvalidVoterException extends Exception {
+class InvalidVoterException extends RuntimeException {
     public InvalidVoterException(String msg) {
         super(msg);
     }
 }
-// class sam extends DefaultExceptionHandler{
 
-// }
 public class CustomExcep {
-    public static void main(String[] args) throws InvalidVoterException {
-        Scanner scan = new Scanner(System.in);
-        if (scan.nextInt() < 18) {
-            throw new InvalidVoterException("Invalid Age For Voting");
-        }
+
+    static void myMethod(int a) throws InvalidVoterException{
+        // try {
+            if (a < 18) {
+                throw new InvalidVoterException("Vay");
+            } else {
+                System.out.println("asdfh");
+            }
+        // } catch (InvalidVoterException e) {
+        //     System.out.println(e.getMessage());
+        // }
+    }
+
+    public static void main(String[] args){
+        myMethod(20);
+
     }
 }
